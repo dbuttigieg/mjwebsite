@@ -81,7 +81,7 @@
             <!--<p class="item-intro text-muted">Click <a href="#book">HERE</a> for hiring conditions</p>-->
             <p><i>Kindly fill this form to enquire and we will get back to you as soon as possible.
             This is not an official booking. Further details, pricing and confirmation will be sent via e-mail.</i></p>
-            <form>
+            <form name="enquireTaxi" id="bookTransfer">
                 <div class="row" style="padding-bottom: 5px">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -167,7 +167,11 @@
                 <div class="row" style="padding-bottom: 5px">
                     <div class='col-sm-6'>
                         <div class="form-group">
-                            <label for="datetime">Date and Time:</label>
+                            <label for="datetime"> Date and Time:
+                                <a href="#" data-toggle="timeTooltip"
+                                    title="Provide flight landing or departure time for airport transfers">
+                                    <i class="fa fa-info-circle"></i></a>
+                            </label>
                             <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='datetime'>
                                 <input class="form-control" type="text"/>
                                 <span class="input-group-addon">
@@ -181,16 +185,16 @@
                 <div class="row" style="padding-bottom: 5px">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="pickupret">Pickup Location: </label>
-                            <input type="text" class="form-control" placeholder="Pick up location" id="pickupret" required data-validation-required-message="Enter your pick-up location preference">
+                            <label for="pickup">Pickup Location: </label>
+                            <input type="text" class="form-control" placeholder="Pick up location" id="pickup" required data-validation-required-message="Enter your pick-up location preference">
                             <p class="help-block text-danger"></p>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="dropoffret">Drop Off Location: </label>
-                            <input type="text" class="form-control" placeholder="Drop off location" id="dropoffret" required data-validation-required-message="Enter your drop-off location preference">
+                            <label for="dropoff">Drop Off Location: </label>
+                            <input type="text" class="form-control" placeholder="Drop off location" id="dropoff" required data-validation-required-message="Enter your drop-off location preference">
                             <p class="help-block text-danger"></p>
                             <p class="help-block text-danger"></p>
                         </div>
@@ -231,7 +235,11 @@
                     <div class="row" style="padding-bottom: 5px">
                         <div class='col-sm-6'>
                             <div class="form-group">
-                                <label for="datetimeret">Date and Time:</label>
+                                <label for="datetimeret">Date and Time:
+                                    <a href="#" data-toggle="timeTooltip"
+                                       title="Provide flight landing or departure time for airport transfers">
+                                        <i class="fa fa-info-circle"></i></a>
+                                </label>
                                 <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='datetimeret'>
                                     <input class="form-control" type="text"/>
                                     <span class="input-group-addon">
@@ -245,16 +253,16 @@
                     <div class="row" style="padding-bottom: 5px">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="pickup">Pickup Location: </label>
-                                <input type="text" class="form-control" placeholder="Pick up location" id="pickup" required data-validation-required-message="Enter your pick-up location preference">
+                                <label for="pickupret">Pickup Location: </label>
+                                <input type="text" class="form-control" placeholder="Pick up location" id="pickupret" required data-validation-required-message="Enter your pick-up location preference">
                                 <p class="help-block text-danger"></p>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="dropoff">Drop Off Location: </label>
-                                <input type="text" class="form-control" placeholder="Drop off location" id="dropoff" required data-validation-required-message="Enter your drop-off location preference">
+                                <label for="dropoffret">Drop Off Location: </label>
+                                <input type="text" class="form-control" placeholder="Drop off location" id="dropoffret" required data-validation-required-message="Enter your drop-off location preference">
                                 <p class="help-block text-danger"></p>
                                 <p class="help-block text-danger"></p>
                             </div>
@@ -264,7 +272,7 @@
 
                 <div class="form-group">
                     <label for="comments">Additional Comments:</label>
-                    <textarea class="form-control" placeholder="Additional Comments" id="comments" required data-validation-required-message="Enter any additional comments"></textarea>
+                    <textarea class="form-control" placeholder="Additional Comments" id="comments"></textarea>
                     <p class="help-block text-danger"></p>
                 </div>
                 <div class="col-lg-12 text-center">
@@ -309,6 +317,12 @@
         function enableReturn() {
                 document.getElementById("returnfields").disabled = false;
         }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="timeTooltip"]').tooltip();
+        });
     </script>
 
     <script type="text/javascript">
