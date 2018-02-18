@@ -27,7 +27,7 @@ $(function() {
             var comments = $("textarea#comments").val();
 
             $.ajax({
-                url: "././mail/transfer_enquiry.php",
+                url: "././mail/car_enquiry.php",
                 type: "POST",
                 data: {
                     name: name,

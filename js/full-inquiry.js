@@ -53,7 +53,7 @@ $(function() {
             }
 
             $.ajax({
-                url: "././mail/transfer_enquiry.php",
+                url: "././mail/full_enquiry.php",
                 type: "POST",
                 data: {
                     name: name,
