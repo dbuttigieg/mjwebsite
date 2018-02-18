@@ -12,6 +12,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -29,18 +30,8 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
     <![endif]-->
-
-    <!--  jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-
 </head>
+
 <body id="page-top" class="index">
 
     <!-- Navigation -->
@@ -86,81 +77,199 @@
 
     <section id="contact-taxi">
         <div class="container">
-            <h2>Taxi Inquiry</h2>
+            <h1>Transfer Enquiry</h1>
             <!--<p class="item-intro text-muted">Click <a href="#book">HERE</a> for hiring conditions</p>-->
-
+            <p><i>Kindly fill this form to enquire and we will get back to you as soon as possible.
+            This is not an official booking. Further details, pricing and confirmation will be sent via e-mail.</i></p>
             <form>
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Enter your name">
-                    <p class="help-block text-danger"></p>
+                <div class="row" style="padding-bottom: 5px">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Enter your name">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="surname">Surname:</label>
+                            <input type="text" class="form-control" placeholder="Surname" id="surname" required data-validation-required-message="Enter your surname">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="surname">Surname:</label>
-                    <input type="text" class="form-control" placeholder="Surname" id="surname" required data-validation-required-message="Enter your surname">
-                    <p class="help-block text-danger"></p>
+
+                <div class="row" style="padding-bottom: 5px">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="email">E-Mail:</label>
+                            <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Enter your email address">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="phone">Phone:</label>
+                            <input type="tel" class="form-control" placeholder="Phone (including area code)" id="phone" required data-validation-required-message="Enter your phone number">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">E-Mail:</label>
-                    <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Enter your email address">
-                    <p class="help-block text-danger"></p>
+
+                <div class="row" style="padding-bottom: 10px">
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="radio-inline">
+                                <input type="radio" name="oneRetOpt" id="onewaytrf" checked="" onclick="disableReturn()">
+                                One Way
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-check">
+                            <label class="radio-inline">
+                                <input type="radio" name="oneRetOpt" id="returntrf" onclick="enableReturn()">
+                                Return
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone:</label>
-                    <input type="tel" class="form-control" placeholder="Phone (including area code)" id="phone" required data-validation-required-message="Enter your phone number">
-                    <p class="help-block text-danger"></p>
+
+                <div class="row" style="padding-bottom: 5px">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="transferType">Transfer Type:</label>
+                            <select class="form-control" placeholder="Transfer Type" id="transferType">
+                                <option> </option>
+                                <option>Direct Tranfser</option>
+                                <option>Split Transfer</option>
+                            </select>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="numadults">Adults:</label>
+                            <input type="number" min="0" class="form-control" placeholder="Number of Adults" id="numadults" required data-validation-required-message="Enter a number">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="numchild">Children:</label>
+                            <input type="number" min="0" class="form-control" placeholder="Number of Children (under 12 years old)" id="numchild" required data-validation-required-message="Enter a number">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="transferType">Transfer Type:</label>
-                    <select class="form-control" placeholder="Transfer Type" id="transferType">
-                        <option> </option>
-                        <option>Direct Tranfser</option>
-                        <option>Split Transfer</option>
-                    </select>
-                    <p class="help-block text-danger"></p>
-                </div>
-                <!--<div class="form-group">-->
-                    <!--<div class='input-group date' id='datetimepicker1'>-->
-                        <!--<input type='text' class="form-control" />-->
-                        <!--<span class="input-group-addon">-->
-                        <!--<span class="glyphicon glyphicon-calendar"></span>-->
-                    <!--</span>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <div class="row">
+
+                <div class="row" style="padding-bottom: 5px">
                     <div class='col-sm-6'>
                         <div class="form-group">
                             <label for="datetime">Date and Time:</label>
-                            <div class='input-group date' id='datetime'>
-                                <input type='text' class="form-control" />
+                            <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='datetime'>
+                                <input class="form-control" type="text"/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetime').datetimepicker({format: 'dd-mm-yyyy hh:ii'});
-                        });
-                    </script>
                 </div>
-                <div class="form-group">
-                    <label for="pickup">Pickup Location: </label>
-                    <input type="text" class="form-control" placeholder="Pick up location" id="pickup" required data-validation-required-message="Enter your pick-up location preference">
-                    <p class="help-block text-danger"></p>
-                    <p class="help-block text-danger"></p>
+
+                <div class="row" style="padding-bottom: 5px">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="pickupret">Pickup Location: </label>
+                            <input type="text" class="form-control" placeholder="Pick up location" id="pickupret" required data-validation-required-message="Enter your pick-up location preference">
+                            <p class="help-block text-danger"></p>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="dropoffret">Drop Off Location: </label>
+                            <input type="text" class="form-control" placeholder="Drop off location" id="dropoffret" required data-validation-required-message="Enter your drop-off location preference">
+                            <p class="help-block text-danger"></p>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="dropoff">Pickup Location: </label>
-                    <input type="text" class="form-control" placeholder="Drop off location" id="dropoff" required data-validation-required-message="Enter your drop-off location preference">
-                    <p class="help-block text-danger"></p>
-                    <p class="help-block text-danger"></p>
-                </div>
+
+                <h4>Return Details</h4>
+                <fieldset id="returnfields" disabled>
+                    <div class="row" style="padding-bottom: 5px">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="transferTypeRet">Transfer Type:</label>
+                                <select class="form-control" placeholder="Transfer Type" id="transferTypeRet">
+                                    <option> </option>
+                                    <option>Direct Tranfser</option>
+                                    <option>Split Transfer</option>
+                                </select>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="numadultsRet">Adults:</label>
+                                <input type="number" min="0" class="form-control" placeholder="Number of Adults" id="numadultsRet" required data-validation-required-message="Enter a number">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="numchildRet">Children:</label>
+                                <input type="number" min="0" class="form-control" placeholder="Number of Children (under 12 years old)" id="numchildRet" required data-validation-required-message="Enter a number">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom: 5px">
+                        <div class='col-sm-6'>
+                            <div class="form-group">
+                                <label for="datetimeret">Date and Time:</label>
+                                <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='datetimeret'>
+                                    <input class="form-control" type="text"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom: 5px">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="pickup">Pickup Location: </label>
+                                <input type="text" class="form-control" placeholder="Pick up location" id="pickup" required data-validation-required-message="Enter your pick-up location preference">
+                                <p class="help-block text-danger"></p>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="dropoff">Drop Off Location: </label>
+                                <input type="text" class="form-control" placeholder="Drop off location" id="dropoff" required data-validation-required-message="Enter your drop-off location preference">
+                                <p class="help-block text-danger"></p>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
                 <div class="form-group">
                     <label for="comments">Additional Comments:</label>
                     <textarea class="form-control" placeholder="Additional Comments" id="comments" required data-validation-required-message="Enter any additional comments"></textarea>
                     <p class="help-block text-danger"></p>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <div id="success"></div>
+                    <button type="submit" class="btn btn-xl">Send</button>
                 </div>
             </form>
         </div>
@@ -189,15 +298,34 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="vendor/bootstrap/js/locales/bootstrap-datetimepicker.fr.js"></script>
+    <script type="text/javascript">
+        function disableReturn() {
+                document.getElementById("returnfields").disabled = true;
+        }
+    </script>
+    <script type="text/javascript">
+        function enableReturn() {
+                document.getElementById("returnfields").disabled = false;
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#datetime').datetimepicker();
+        });
+    </script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/taxi-inquiry.js"></script>
+    <script src="js/contact_me.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
+
 </body>
 </html>
