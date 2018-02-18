@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Book a Transfer</title>
+    <title>Book a Car</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,6 @@
                 <a class="navbar-brand" href="index.html">
                     <img src="img/logos/mjlogowhite.png" style="height:60px;width:128px">
                 </a>
-                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -78,11 +77,11 @@
 
     <section id="contact-taxi">
         <div class="container">
-            <h1>Transfer Enquiry</h1>
+            <h1>Car Rental Enquiry</h1>
             <!--<p class="item-intro text-muted">Click <a href="#book">HERE</a> for hiring conditions</p>-->
             <p><i>Kindly fill this form to enquire and we will get back to you as soon as possible.
             This is not an official booking. Further details, pricing and confirmation will be sent via e-mail.</i></p>
-            <form name="enquireTaxi" id="bookTransfer">
+            <form name="enquireCar" id="bookCar">
                 <div class="row" style="padding-bottom: 5px">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -117,157 +116,121 @@
                     </div>
                 </div>
 
-                <div class="row" style="padding-bottom: 10px">
-                    <div class="col-sm-2">
-                        <div class="form-check">
-                            <label class="radio-inline">
-                                <input type="radio" name="oneRetOpt" id="onewaytrf" checked="" onclick="disableReturn()">
-                                One Way
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="form-check">
-                            <label class="radio-inline">
-                                <input type="radio" name="oneRetOpt" id="returntrf" onclick="enableReturn()">
-                                Return
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row" style="padding-bottom: 5px">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="transferType">Transfer Type:</label>
-                            <select class="form-control" placeholder="Transfer Type" id="transferType" required>
+                            <label for="carGroup">Car Rental Group:</label>
+                            <select class="form-control" id="carGroup" required>
                                 <option> </option>
-                                <option>Direct Tranfser</option>
-                                <option>Split Transfer</option>
+                                <option>Family Car (Kia Picanto or Similar)</option>
+                                <option>Full-Size Car (Kia Ceed or Similar)</option>
+                                <option>7-Seater (Kia Sedona or Similar)</option>
+                                <option>Jeeps (Maruti Gypsy or Similar)</option>
                             </select>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
-
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="numadults">Adults:</label>
-                            <input type="number" min="0" class="form-control" placeholder="Number of Adults" id="numadults" required data-validation-required-message="Enter a number">
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group">
-                            <label for="numchild">Children:</label>
-                            <input type="number" min="0" class="form-control" placeholder="Number of Children (under 12 years old)" id="numchild" required data-validation-required-message="Enter a number">
+                            <label for="driverAge">Age of Driver</label>
+                            <select class="form-control" id="driverAge" required>
+                                <option> </option>
+                                <option>21-24</option>
+                                <option>25+</option>
+                            </select>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
                 </div>
 
+                <h4>Car Pick-up Details</h4>
                 <div class="row" style="padding-bottom: 5px">
                     <div class='col-sm-6'>
                         <div class="form-group">
-                            <label for="datetime"> Date and Time:
-                                <a href="#" data-toggle="timeTooltip"
-                                    title="Provide flight landing or departure time for airport transfers">
-                                    <i class="fa fa-info-circle"></i></a>
-                            </label>
-                            <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='datetime'>
-                                <input class="form-control" type="text" required />
+                            <label for="carPUdatetime"> Date and Time: </label>
+                            <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='carPUdatetime'>
+                                <input class="form-control" type="text" required/>
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
                             </div>
                         </div>
                     </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="carPickupLoc">Pick-up Location: </label>
+                            <input type="text" class="form-control" placeholder="Pick-up location" id="carPickupLoc" required data-validation-required-message="Enter your pick-up location preference">
+                            <p class="help-block text-danger"></p>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Car Return Details</h4>
+                <div class="row" style="padding-bottom: 5px">
+                    <div class='col-sm-6'>
+                        <div class="form-group">
+                            <label for="carRetdatetime"> Date and Time:</label>
+                            <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='carRetdatetime'>
+                                <input class="form-control" type="text" required/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="carDropOffLoc">Drop Off Location: </label>
+                            <input type="text" class="form-control" placeholder="Drop off location" id="carDropOffLoc" required data-validation-required-message="Enter your drop-off location preference">
+                            <p class="help-block text-danger"></p>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Extras</h4>
+                <div class="row col-sm-12" style="padding-bottom: 15px">
+                    <div class="form-group">
+                        <input type="checkbox" id="insurance"> Collision Damage Waiver
+                            <a href="#" data-toggle="insuranceTooltip"
+                               title="With the Collision Damage Waiver fee you are fully-insured on the vehicle and excess
+                                is reduced to a very low charge."><i class="fa fa-info-circle"></i></a>
+                    </div>
                 </div>
 
                 <div class="row" style="padding-bottom: 5px">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="pickup">Pick-up Location: </label>
-                            <input type="text" class="form-control" placeholder="Pick-up location" id="pickup" required data-validation-required-message="Enter your pick-up location preference">
-                            <p class="help-block text-danger"></p>
-                            <p class="help-block text-danger"></p>
-                        </div>
+                    <div class="col-sm-4">
+                        <input type="checkbox" id="additionalDriver" onclick="enableAge(this)"> Additional Driver
+                        <a href="#" data-toggle="addDriveTooltip"
+                           title="This comes at a low extra charge daily. Price is quoted upon enquiry.">
+                            <i class="fa fa-info-circle"></i></a>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="dropoff">Drop-off Location: </label>
-                            <input type="text" class="form-control" placeholder="Drop-off location" id="dropoff" required data-validation-required-message="Enter your drop-off location preference">
-                            <p class="help-block text-danger"></p>
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <h4>Return Details</h4>
-                <fieldset id="returnfields" disabled>
-                    <div class="row" style="padding-bottom: 5px">
-                        <div class="col-sm-4">
+                    <div class="col-sm-4">
+                        <fieldset id="addDriveAgeField">
                             <div class="form-group">
-                                <label for="transferTypeRet">Transfer Type:</label>
-                                <select class="form-control" placeholder="Transfer Type" id="transferTypeRet" required>
+                                <label for="addDriveAge">Age of Additional Driver</label>
+                                <select class="form-control" id="addDriveAge">
                                     <option> </option>
-                                    <option>Direct Tranfser</option>
-                                    <option>Split Transfer</option>
+                                    <option>21-24</option>
+                                    <option>25+</option>
                                 </select>
                                 <p class="help-block text-danger"></p>
                             </div>
-                        </div>
+                        </fieldset>
+                    </div>
+                </div>
 
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="numadultsRet">Adults:</label>
-                                <input type="number" min="0" class="form-control" placeholder="Number of Adults" id="numadultsRet" required data-validation-required-message="Enter a number">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="numchildRet">Children:</label>
-                                <input type="number" min="0" class="form-control" placeholder="Number of Children (under 12 years old)" id="numchildRet" required data-validation-required-message="Enter a number">
-                                <p class="help-block text-danger"></p>
-                            </div>
+                <div class="row" style="padding-bottom: 15px">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <input type="checkbox" id="babySeat"> Baby Seat
+                            <a href="#" data-toggle="addDriveTooltip"
+                               title="This comes at a low extra charge daily. Price is quoted upon enquiry.">
+                                <i class="fa fa-info-circle"></i></a>
                         </div>
                     </div>
-
-                    <div class="row" style="padding-bottom: 5px">
-                        <div class='col-sm-6'>
-                            <div class="form-group">
-                                <label for="datetimeret">Date and Time:
-                                    <a href="#" data-toggle="timeTooltip"
-                                       title="Provide flight landing or departure time for airport transfers">
-                                        <i class="fa fa-info-circle"></i></a>
-                                </label>
-                                <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='datetimeret'>
-                                    <input class="form-control" type="text" required/>
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" style="padding-bottom: 5px">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="pickupret">Pick-up Location: </label>
-                                <input type="text" class="form-control" placeholder="Pick-up location" id="pickupret" required data-validation-required-message="Enter your pick-up location preference">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="dropoffret">Drop-off Location: </label>
-                                <input type="text" class="form-control" placeholder="Drop-off location" id="dropoffret" required data-validation-required-message="Enter your drop-off location preference">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
+                </div>
 
                 <div class="form-group" style="padding-bottom: 10px">
                     <label for="comments">Additional Comments:</label>
@@ -308,30 +271,31 @@
     <script src="vendor/bootstrap/js/bootstrap-datetimepicker.js"></script>
     <script src="vendor/bootstrap/js/locales/bootstrap-datetimepicker.fr.js"></script>
     <script type="text/javascript">
-        function disableReturn() {
-                document.getElementById("returnfields").disabled = true;
-        }
-    </script>
-    <script type="text/javascript">
-        function enableReturn() {
-                document.getElementById("returnfields").disabled = false;
+        function enableAge(checkbox) {
+            var toggle = document.getElementById("addDriveAgeField");
+            $(toggle).prop('disabled', $(checkbox).prop('checked'));
         }
     </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('[data-toggle="timeTooltip"]').tooltip();
+            $('[data-toggle="insuranceTooltip"]').tooltip();
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="addDriveTooltip"]').tooltip();
         });
     </script>
 
     <script type="text/javascript">
         $(function () {
-            $('#datetime').datetimepicker();
+            $('#carPUdatetime').datetimepicker();
         });
     </script>
     <script type="text/javascript">
         $(function () {
-            $('#datetimeret').datetimepicker();
+            $('#carRetdatetime').datetimepicker();
         });
     </script>
 
