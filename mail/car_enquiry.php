@@ -38,7 +38,7 @@ $babyseat = strip_tags(htmlspecialchars($_POST['babyseat']));
 $additionalcomments = strip_tags(htmlspecialchars($_POST['comments']));
    
 // Create the email and send the message
-$to = 'denisebuttigieg04@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
+$to = 'denisebuttigieg04@gmail.com'; 
 $email_subject = "Website Contact Form:  $name";
 $email_body = "You have received a new Car Rental Enquiry from M&J Car Rentals Website.\n\n".
                "Here are the details:\n\n
