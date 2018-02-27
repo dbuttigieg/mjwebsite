@@ -263,10 +263,11 @@
                                 <option value="inquire-taxi.html">Enquire for a Transfer</option>
                                 <option>Enquire for a Day Tour</option>
                             </select>
+                            <br><br>
+                            <input type="button" class="btn btn-xl" value="Proceed" onclick="gotoPage()"/>
                             <p class="help-block text-danger"></p>
                         </div>
                      </form>
-                     <a href="inquire-taxi.html" class="btn btn-xl" onclick="gotoPage(document.jump.enquiryMenu)">Proceed</a>
                  </div>
             </div>
         </div>
@@ -724,10 +725,10 @@
     </div>
 
     <script>
-        function gotoPage(dropdownlist){
-            var link = dropdownlist.options(dropdownlist.selectedIndex).value;
-            if(link!="") {
-                window.open(link);
+        function gotoPage() {
+            var link = document.getElementById('bookingType').value;
+            if(link != 'none') {
+                window.location = link;
             }
         }
     </script>
