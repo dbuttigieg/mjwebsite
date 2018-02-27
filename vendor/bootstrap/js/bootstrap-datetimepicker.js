@@ -780,7 +780,7 @@
         }
         prevMonth.setUTCDate(prevMonth.getUTCDate() + 1);
       }
-      this.picker.find('.datetimepicker-days tbody').empty().append(html.join(''));
+      this.picker.find('.datetimepickerdatetimepicker-days tbody').empty().append(html.join(''));
 
       html = [];
       var txt = '', meridian = '', meridianOld = '';
