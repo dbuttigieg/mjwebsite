@@ -44,8 +44,8 @@ $trf2_dropoff = strip_tags(htmlspecialchars($_POST['trf2_dropoff']));
 $additionalcomments = strip_tags(htmlspecialchars($_POST['comments']));
    
 // Create the email and send the message
-$to = 'denisebuttigieg04@gmail.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-$email_subject = "Website Contact Form:  $name";
+$to = 'info@mjcarrentals.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
+$email_subject = "(Website) Transfer Inquiry: $name $surname";
 $email_body = "You have received a new Transfer Enquiry from M&J Car Rentals Website Transfer Enquiry Form.\n\n".
                "Here are the details:\n\n
                Name: $name\n\n

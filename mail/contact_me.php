@@ -17,7 +17,7 @@ $message = strip_tags(htmlspecialchars($_POST['message']));
    
 // Create the email and send the message
 $to = 'info@mjcarrentals.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-$email_subject = "Website Contact Form:  $name";
+$email_subject = "Website Contact Us Form:  $name";
 $email_body = "You have received a general query from M&J Car Rentals Website's contact form.\n\n".
                "Here are the details:\n\n
                Name: $name\n\n

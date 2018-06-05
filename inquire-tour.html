@@ -7,12 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="img/favicons/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
 
     <title>Book a Tour</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -30,7 +41,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" integrity="sha384-0s5Pv64cNZJieYFkXYOTId2HMA2Lfb6q2nAcx2n0RTLUnCAoTTsS0nKEO27XyKcY" crossorigin="anonymous"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" integrity="sha384-ZoaMbDF+4LeFxg6WdScQ9nnR1QC2MIRxA1O9KWEXQwns1G8UNyIEZIQidzb0T1fo" crossorigin="anonymous"></script>
     <![endif]-->
-
 </head>
 
 <body id="page-top" class="index">
@@ -45,7 +55,6 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
                     <img src="img/logos/mjlogowhite.png" style="height:60px;width:128px">
-                </a>
                 </a>
             </div>
 
@@ -155,7 +164,7 @@
                     <div class='col-sm-6'>
                         <div class="form-group">
                             <label for="datetime"> Date and Time: </label>
-                            <div class='input-group input-append date' data-date-format="dd-MM-yyyy - HH:ii" id="datetime">
+                            <div class='input-group date form_date' data-date-format="dd MM yyyy" id="datetime">
                                 <input class="form-control" type="text" required />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
@@ -231,10 +240,14 @@
     <script src="vendor/bootstrap/js/locales/bootstrap-datetimepicker.fr.js"></script>
 
     <script type="text/javascript">
-        $(function () {
-            $('#datetime').datetimepicker({
-                pickTime: false
-            });
+        $('.form_date').datetimepicker({
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            minView: 2,
+            forceParse: 0
         });
     </script>
 
@@ -248,6 +261,5 @@
 
     <!-- Theme JavaScript -->
     <script src="js/agency.min.js"></script>
-
 </body>
 </html>
