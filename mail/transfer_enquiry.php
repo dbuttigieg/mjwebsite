@@ -48,28 +48,25 @@ $to = 'info@mjcarrentals.com'; // Add your email address inbetween the '' replac
 $email_subject = "(Website) Transfer Inquiry: $name $surname";
 $email_body = "You have received a new Transfer Enquiry from M&J Car Rentals Website Transfer Enquiry Form.\n\n".
                "Here are the details:\n\n
-               Name: $name\n\n
-               Surname: $surname\n\n
-               Email: $email_address\n\n
-               Phone: $phone\n\n
+               Name: $name\n
+               Surname: $surname\n
+               Email: $email_address\n
+               Phone: $phone\n
                Return: $isReturn\n\n
-               \n\n
-               Transfer 1 Details:\n\n
-               Type: $trf1_transferType\n\n
-               Number of Adults: $trf1_numAdults\n\n
-               Number of Children: $trf1_numChildren\n\n
-               Date and Time: $trf1_datetime\n\n
-               Pick up Location: $trf1_pickup\n\n
+               Transfer 1 Details:\n
+               Type: $trf1_transferType\n
+               Number of Adults: $trf1_numAdults\n
+               Number of Children: $trf1_numChildren\n
+               Date and Time: $trf1_datetime\n
+               Pick up Location: $trf1_pickup\n
                Drop Off Location: $trf1_dropoff\n\n
-               \n\n
-               Transfer 2 Details:\n\n
-               Type: $trf2_transferType\n\n
-               Number of Adults: $trf2_numAdults\n\n
-               Number of Children: $trf2_numChildren\n\n
-               Date and Time: $trf2_datetime\n\n
-               Pick up Location: $trf2_pickup\n\n
+               Transfer 2 Details:\n
+               Type: $trf2_transferType\n
+               Number of Adults: $trf2_numAdults\n
+               Number of Children: $trf2_numChildren\n
+               Date and Time: $trf2_datetime\n
+               Pick up Location: $trf2_pickup\n
                Drop Off Location: $trf2_dropoff\n\n
-               \n\n
                Additional Comments:\n$additionalcomments";
 $headers = "From: noreply@mjcarrentals.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
 $headers .= "Reply-To: $email_address";   
