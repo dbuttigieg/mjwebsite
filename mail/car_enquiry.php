@@ -60,7 +60,7 @@ $email_body = "You have received a new Car Rental Enquiry from M&J Car Rentals W
                Baby seat: $babyseat\n\n
                \n\n
                Additional Comments:\n$additionalcomments";
-$headers = "From: noreply@mjcarrentals.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
+$headers = "From: $email_address\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
 $headers .= "Reply-To: $email_address";   
 mail($to,$email_subject,$email_body,$headers);
 return true;         
