@@ -31,7 +31,7 @@ $additionalcomments = strip_tags(htmlspecialchars($_POST['comments']));
    
 // Create the email and send the message
 $to = 'info@mjcarrentals.com';
-$email_subject = "(Website) Tour Inquiry: $name $surname";
+$email_subject = "(Website) Tour Inquiry:  $name";
 $email_body = "You have received a new Day Tour Enquiry from M&J Car Rentals Website.\n\n".
                "Here are the details:\n\n
                Name: $name\n\n
@@ -47,7 +47,7 @@ $email_body = "You have received a new Day Tour Enquiry from M&J Car Rentals Web
                Drop-off Location: $do_loc \n\n
                \n\n
                Additional Comments:\n$additionalcomments";
-$headers = "From: noreply@mjcarrentals.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
+$headers = "From: MJCarRentals.com@shared81.accountservergroup.com\n";
 $headers .= "Reply-To: $email_address";   
 mail($to,$email_subject,$email_body,$headers);
 return true;         

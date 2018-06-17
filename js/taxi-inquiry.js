@@ -2,7 +2,7 @@
 
 $(function() {
 
-    $("#bookTransfer input,#bookTransfer textarea").jqBootstrapValidation({
+    $("#bookTransfer input,#bookTransfer textarea, #bookTransfer select").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
@@ -41,7 +41,7 @@ $(function() {
             }
 
             $.ajax({
-                url: "././mail/transfer_enquiry.php",
+                url: "./mail/transfer_enquiry.php",
                 type: "POST",
                 data: {
                     name: name,

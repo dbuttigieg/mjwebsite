@@ -332,7 +332,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="transferTypeRet">Transfer Type:</label>
-                                <select class="form-control" placeholder="Transfer Type" id="transferTypeRet" required>
+                                <select class="form-control" placeholder="Transfer Type" id="transferTypeRet">
                                     <option> </option>
                                     <option>Direct Tranfser</option>
                                     <option>Split Transfer</option>
@@ -344,14 +344,14 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="numadultsRet">Adults:</label>
-                                <input type="number" min="0" class="form-control" placeholder="Number of Adults" id="numadultsRet" required data-validation-required-message="Enter a number">
+                                <input type="number" min="0" class="form-control" placeholder="Number of Adults" id="numadultsRet" data-validation-required-message="Enter a number">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="numchildRet">Children:</label>
-                                <input type="number" min="0" class="form-control" placeholder="Number of Children (under 12 years old)" id="numchildRet" required data-validation-required-message="Enter a number">
+                                <input type="number" min="0" class="form-control" placeholder="Number of Children (under 12 years old)" id="numchildRet" data-validation-required-message="Enter a number">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -366,7 +366,7 @@
                                         <i class="fa fa-info-circle"></i></a>
                                 </label>
                                 <div class='input-group date form_datetime' data-date-format="dd-MM-yyyy - HH:ii" id='datetimeret'>
-                                    <input class="form-control" type="text" required/>
+                                    <input class="form-control" type="text"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -379,14 +379,14 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="pickupret">Pick-up Location: </label>
-                                <input type="text" class="form-control" placeholder="Pick-up location" id="pickupret" required data-validation-required-message="Enter your pick-up location preference">
+                                <input type="text" class="form-control" placeholder="Pick-up location" id="pickupret" data-validation-required-message="Enter your pick-up location preference">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="dropoffret">Drop-off Location: </label>
-                                <input type="text" class="form-control" placeholder="Drop-off location" id="dropoffret" required data-validation-required-message="Enter your drop-off location preference">
+                                <input type="text" class="form-control" placeholder="Drop-off location" id="dropoffret" data-validation-required-message="Enter your drop-off location preference">
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -402,10 +402,11 @@
                     <div id="success"></div>
                     <button type="submit" class="btn btn-xl">Send</button>
                 </div>
-                <div class="col-lg-12 text-center" style="padding: 10px">
-                    <a href="#termsModal" class="portfolio-link" data-toggle="modal">Rental Terms</a>
-                </div>
             </form>
+
+            <div class="col-lg-12 text-center" style="padding: 10px">
+                <a href="#termsModal" class="portfolio-link" data-toggle="modal">Rental Terms</a>
+            </div>
         </div>
     </section>
 

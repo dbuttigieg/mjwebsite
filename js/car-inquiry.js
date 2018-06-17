@@ -2,7 +2,7 @@
 
 $(function() {
 
-    $("#bookCar input,#bookCar textarea").jqBootstrapValidation({
+    $("#bookCar input,#bookCar textarea, #bookCar select").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
@@ -14,15 +14,15 @@ $(function() {
             var surname = $("input#surname").val();
             var email = $("input#email").val();
             var phone = $("input#phone").val();
-            var group = $("input#carGroup").val();
-            var age = $("input#driverAge").val();
+            var group = $("select#carGroup").val();
+            var age = $("select#driverAge").val();
             var car_pu_time = $("input#carPUdatetime").val();
             var car_pu_loc = $("input#carPickupLoc").val();
             var car_do_time = $("input#carRetdatetime").val();
             var car_do_loc = $("input#cardropoffloc").val();
             var ins = $("input#insurance").val();
             var addDriver = $("input#additionalDriver").val();
-            var additionalDriverAge = $("input#addDriveAge").val();
+            var additionalDriverAge = $("select#addDriveAge").val();
             var babyseat = $("input#babySeat").val();
             var comments = $("textarea#comments").val();
 

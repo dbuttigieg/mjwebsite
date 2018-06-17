@@ -2,7 +2,7 @@
 
 $(function() {
 
-    $("#bookFull input,#bookFull textarea").jqBootstrapValidation({
+    $("#bookFull input,#bookFull textarea, #bookFull select").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
@@ -53,7 +53,7 @@ $(function() {
             }
 
             $.ajax({
-                url: "././mail/full_enquiry.php",
+                url: "./mail/full-enquiry.php",
                 type: "POST",
                 data: {
                     name: name,
@@ -122,7 +122,6 @@ $(function() {
         $(this).tab("show");
     });
 });
-
 
 /*When clicking on Full hide fail/success boxes */
 $('#name').focus(function() {

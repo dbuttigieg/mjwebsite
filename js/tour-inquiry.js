@@ -2,7 +2,7 @@
 
 $(function() {
 
-    $("#enquireTour input,#enquireTour textarea").jqBootstrapValidation({
+    $("#bookTour input,#bookTour textarea, #bookTour select").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
@@ -51,7 +51,7 @@ $(function() {
                         .append('</div>');
 
                     //clear all fields
-                    $('#enquireTour').trigger("reset");
+                    $('#bookTour').trigger("reset");
                 },
                 error: function() {
                     // Fail message
@@ -61,7 +61,7 @@ $(function() {
                     $('#success > .alert-danger').append($("<strong>").text("Sorry " + name + ", it seems that my mail server is not responding. Please try again later!"));
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
-                    $('#enquireTour').trigger("reset");
+                    $('#bookTour').trigger("reset");
                 },
             });
         },
