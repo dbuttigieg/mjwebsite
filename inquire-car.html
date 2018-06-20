@@ -65,7 +65,7 @@
                         <a class="page-scroll" href="index.html#portfolio">Car Rentals</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.html#taxi">Taxi</a>
+                        <a class="page-scroll" href="index.html#taxi">Transfers</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="index.html#book">Book</a>
@@ -153,8 +153,8 @@
                     <div class='col-sm-6'>
                         <div class="form-group">
                             <label for="carPUdatetime"> Date and Time: </label>
-                            <div class='input-group date form_datetime' data-date-format="dd MM yyyy - HH:ii" id='carPUdatetime'>
-                                <input class="form-control" type="text" required />
+                            <div class='input-group date start' data-date-format="dd MM yyyy - HH:ii">
+                                <input class="form-control" type="text" id='carPUdatetime' required />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -166,7 +166,6 @@
                             <label for="carPickupLoc">Pick-up Location: </label>
                             <input type="text" class="form-control" placeholder="Pick-up location" id="carPickupLoc" required data-validation-required-message="Enter your pick-up location preference">
                             <p class="help-block text-danger"></p>
-                            <p class="help-block text-danger"></p>
                         </div>
                     </div>
                 </div>
@@ -176,8 +175,8 @@
                     <div class='col-sm-6'>
                         <div class="form-group">
                             <label for="carRetdatetime"> Date and Time:</label>
-                            <div class='input-group date form_datetime' data-date-format="dd MM yyyy - HH:ii" id='carRetdatetime'>
-                                <input class="form-control" type="text" required />
+                            <div class='input-group date end' data-date-format="dd MM yyyy - HH:ii">
+                                <input class="form-control" type="text" id='carRetdatetime' required />
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </span>
@@ -188,7 +187,6 @@
                         <div class="form-group">
                             <label for="carDropOffLoc">Drop Off Location: </label>
                             <input type="text" class="form-control" placeholder="Drop off location" id="carDropOffLoc" required data-validation-required-message="Enter your drop-off location preference">
-                            <p class="help-block text-danger"></p>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -375,8 +373,12 @@
     </script>
 
     <script type="text/javascript">
-        $('.form_datetime').datetimepicker({
+        var today_date = new Date();
+        today_date.setDate(today_date.getDate());
+
+        $('.start').datetimepicker({
             //language:  'fr',
+            startDate: today_date,
             weekStart: 1,
             todayBtn:  1,
             autoclose: 1,
@@ -384,6 +386,22 @@
             startView: 2,
             forceParse: 0,
             showMeridian: 1
+        }).on('changeDate',function(e){
+            $('.end').datetimepicker('setStartDate', e.date)
+        });
+
+        $('.end').datetimepicker({
+            useCurrent:false,
+            //language:  'fr',
+            startDate: today_date,
+            weekStart: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1
+        }).on('changeDate',function(e){
+            $('.start').datetimepicker('setEndDate', e.date)
         });
     </script>
 

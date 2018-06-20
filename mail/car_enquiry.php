@@ -1,25 +1,4 @@
 <?php
-// Check for empty fields
-if(empty($_POST['name'])                  ||
-   empty($_POST['surname'])               ||
-   empty($_POST['email'])                 ||
-   empty($_POST['phone'])                 ||
-   empty($_POST['group'])                 ||
-   empty($_POST['age'])                   ||
-   empty($_POST['car_pu_time'])           ||
-   empty($_POST['car_pu_loc'])            ||
-   empty($_POST['car_do_time'])           ||
-   empty($_POST['car_do_loc'])            ||
-   empty($_POST['ins'])                   ||
-   empty($_POST['additionalDriver'])      ||
-   empty($_POST['additionalDriverAge'])   ||
-   empty($_POST['babyseat'])              ||
-   empty($_POST['comments'])              ||
-   !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
-   {
-   echo "No arguments Provided!";
-   return false;
-   }
 
 $name = strip_tags(htmlspecialchars($_POST['name']));
 $surname = strip_tags(htmlspecialchars($_POST['surname']));
@@ -32,36 +11,145 @@ $car_pu_loc = strip_tags(htmlspecialchars($_POST['car_pu_loc']));
 $car_do_time = strip_tags(htmlspecialchars($_POST['car_do_time']));
 $car_do_loc = strip_tags(htmlspecialchars($_POST['car_do_loc']));
 $ins = strip_tags(htmlspecialchars($_POST['ins']));
-$addDriver = strip_tags(htmlspecialchars($_POST['additionalDriver']));
+$addDriver = strip_tags(htmlspecialchars($_POST['addDriver']));
 $addDriverAge = strip_tags(htmlspecialchars($_POST['additionalDriverAge']));
 $babyseat = strip_tags(htmlspecialchars($_POST['babyseat']));
 $additionalcomments = strip_tags(htmlspecialchars($_POST['comments']));
    
 // Create the email and send the message
 $to = 'info@mjcarrentals.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-$email_subject = "(Website) Car Inquiry:  $name";
-$email_body = "You have received a new Car Rental Enquiry from M&J Car Rentals Website.\n\n".
-               "Here are the details:\n\n
-               Name: $name\n\n
-               Surname: $surname\n\n
-               Email: $email_address\n\n
-               Phone: $phone\n\n
-               Return: $isReturn\n\n
-               \n\n
-               Group: $group\n\n
-               Age of Driver: $age\n\n
-               From: $car_pu_time at $car_pu_loc\n\n
-               To: $car_pu_time at $car_do_loc\n\n
-               \n\n
-               Extras:\n\n
-               Insurance: $ins\n\n
-               Additional Driver: $addDriver \n\n
-               Additional Driver Age: $addDriverAge\n\n
-               Baby seat: $babyseat\n\n
-               \n\n
-               Additional Comments:\n$additionalcomments";
-$headers = "From: MJCarRentals.com@shared81.accountservergroup.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-$headers .= "Reply-To: $email_address";   
+$email_subject = "(Website) Car Rental Enquiry:  $name $surname";
+$email_body =
+    "<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+    </head>
+    <body>
+        <h2 style='font-family: Montserrat; color: #222222' align='center'>ENQUIRY FROM M&J CAR RENTALS WEBSITE</h2>
+        <p style=\"font-family: 'Droid Serif'; color: #222222\"> 
+            Details for <b>Car Rental</b> enquiry: <br> <br>
+            Name:  $name <br>
+            Surname:  $surname <br>
+            Email:  $email_address <br>
+            Phone:  $phone <br><br>
+    
+            Group:  $group <br>
+            Age of Driver:  $age <br>
+            From:  $car_pu_loc on $car_pu_time <br>
+            To:  $car_do_loc on $car_do_time <br><br>
+    
+            <b>Extras:</b><br>
+            Insurance:  $ins <br>
+            Additional Driver:  $addDriver <br>
+            Additional Driver Age:  $addDriverAge <br>
+            Baby seat:  $babyseat <br><br>
+    
+            Additional Comments:  $additionalcomments <br> <br>
+        </p>
+       
+        <div style='font-family: Montserrat; color: #222222'>
+            <table style='border-top: 7px solid #225a9f'>
+                <tr>
+                    <th rowspan='3' style='padding: 5px'>
+                        <a href='http://www.mjcarrentals.com' style='color: #222222'><img src='http://mjcarrentals.com/resources/m&j-logo.jpg' width='160' ></a></th>
+                    <td style='padding: 5px'>
+                        <img src='http://mjcarrentals.com/resources/phone-receiver.png' width='20px'/>
+                        <a href='tel://+35621562771' style='color: #222222'>+356 21562771</a> /
+                        <a href='tel://+35699459772' style='color: #222222'>+356 99459772</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='padding: 5px'>
+                        <img src='http://mjcarrentals.com/resources/close-envelope.png' width='20px'/>
+                        <a href='mailto:info@mjcarrentals.com' style='color: #222222'>info@mjcarrentals.com</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='padding: 5px'>
+                        <a href='https://www.facebook.com/mjcarrentals/?fref=ts' target='_blank' style='color: #222222; padding-right: 5px'>
+                            <img src='http://mjcarrentals.com/resources/facebook-logo.png' width='20px'/></a>
+                        <a href='https://goo.gl/maps/wHFiNnEYFwQ2' target='_blank' style='color: #222222'>
+                            <img src='http://mjcarrentals.com/resources/map-pin.png' width='20px'/></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    </html>";
+
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$headers .= 'From:MJCarRentals.com'."\r\n" .
+    'Reply-To: '.$email_address . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
 mail($to,$email_subject,$email_body,$headers);
+
+$reply_headers  = 'MIME-Version: 1.0' . "\r\n";
+$reply_headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$reply_headers .= 'From:MJCarRentals.com'."\r\n" .
+    'Reply-To: '.$to . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+$reply_subject = "M&J Car Rentals Enquiry Confirmation";
+
+$email_reply =
+   "<html lang='en'>
+    <head>
+        <meta charset='UTF-8'>
+    </head>
+    <body>
+        <h2 style='font-family: Montserrat; color: #222222' align='center'>ENQUIRY CONFIRMATION FROM M&J CAR RENTALS</h2>
+        <h4 style='font-family: Montserrat; color: #222222'>Your Car Rental enquiry has been received. </h4>
+        <p style=\"font-family: 'Droid Serif'; color: #222222\"> 
+            Details submitted: <br> <br>
+            Name:  $name <br>
+            Surname:  $surname <br>
+            Email:  $email_address <br>
+            Phone:  $phone <br><br>
+    
+            Group:  $group <br>
+            Age of Driver:  $age <br>
+            From:  $car_pu_loc on $car_pu_time <br>
+            To:  $car_do_loc on $car_do_time <br><br>
+    
+            <b>Extras:</b><br>
+            Insurance:  $ins <br>
+            Additional Driver:  $addDriver <br>
+            Additional Driver Age:  $addDriverAge <br>
+            Baby seat:  $babyseat <br><br>
+    
+            Additional Comments:  $additionalcomments <br> <br>
+        </p>
+        
+        <div style='font-family: Montserrat; color: #222222'>
+            <table style='border-top: 7px solid #225a9f'>
+                <tr>
+                    <th rowspan='3' style='padding: 5px'>
+                        <a href='http://www.mjcarrentals.com' style='color: #222222'><img src='http://mjcarrentals.com/resources/m&j-logo.jpg' width='160' ></a></th>
+                    <td style='padding: 5px'>
+                        <img src='http://mjcarrentals.com/resources/phone-receiver.png' width='20px'/>
+                        <a href='tel://+35621562771' style='color: #222222'>+356 21562771</a> /
+                        <a href='tel://+35699459772' style='color: #222222'>+356 99459772</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='padding: 5px'>
+                        <img src='http://mjcarrentals.com/resources/close-envelope.png' width='20px'/>
+                        <a href='mailto:info@mjcarrentals.com' style='color: #222222'>info@mjcarrentals.com</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='padding: 5px'>
+                        <a href='https://www.facebook.com/mjcarrentals/?fref=ts' target='_blank' style='color: #222222; padding-right: 5px'>
+                            <img src='http://mjcarrentals.com/resources/facebook-logo.png' width='20px'/></a>
+                        <a href='https://goo.gl/maps/wHFiNnEYFwQ2' target='_blank' style='color: #222222'>
+                            <img src='http://mjcarrentals.com/resources/map-pin.png' width='20px'/></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    </html>";
+
+mail($email_address, $reply_subject, $email_reply, $reply_headers);
 return true;         
 ?>

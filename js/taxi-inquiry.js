@@ -16,29 +16,19 @@ $(function() {
             var phone = $("input#phone").val();
             var oneWayTransferBtn = $("input#onewaytrf:checked").val();
             var returnTransferBtn = $("input#returntrf:checked").val();
-            var trf1_transferType = $("input#transferType").val();
+            var trf1_transferType = $("select#transferType").val();
             var trf1_numAdults = $("input#numadults").val();
             var trf1_numChildren = $("input#numchild").val();
             var trf1_datetime = $("input#datetime").val();
             var trf1_pickup = $("input#pickup").val();
             var trf1_dropoff = $("input#dropoff").val();
-
-            var trf2_transferType = $("input#transferTypeRet").val();
+            var trf2_transferType = $("select#transferTypeRet").val();
             var trf2_numAdults = $("input#numadultsRet").val();
             var trf2_numChildren = $("input#numchildRet").val();
             var trf2_datetime = $("input#datetimeret").val();
             var trf2_pickup = $("input#pickupret").val();
             var trf2_dropoff = $("input#dropoffret").val();
-
             var comments = $("textarea#comments").val();
-
-            var isReturn;
-
-            if (oneWayTransferBtn) {
-                isReturn = "No"
-            } else {
-                isReturn = "Yes"
-            }
 
             $.ajax({
                 url: "./mail/transfer_enquiry.php",
@@ -48,8 +38,8 @@ $(function() {
                     surname: surname,
                     email: email,
                     phone: phone,
-                    isReturn: isReturn,
-                    returnTransferBtn: returnTransferBtn,
+                    oneWayTransfer: oneWayTransferBtn,
+                    returnTransfer: returnTransferBtn,
                     trf1_transferType: trf1_transferType,
                     trf1_numAdults: trf1_numAdults,
                     trf1_numChildren: trf1_numChildren,
@@ -62,7 +52,7 @@ $(function() {
                     trf2_datetime: trf2_datetime,
                     trf2_pickup: trf2_pickup,
                     trf2_dropoff: trf2_dropoff,
-                    addcomments: comments
+                    comments: comments
                 },
                 cache: false,
                 success: function() {
@@ -83,7 +73,7 @@ $(function() {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + name + ", it seems that my mail server is not responding. Please try again later!"));
+                    $('#success > .alert-danger').append($("<strong>").text("Sorry, it seems that the mail server is not responding. Please try again later!"));
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#bookTransfer').trigger("reset");
